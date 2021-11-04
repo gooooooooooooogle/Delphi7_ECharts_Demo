@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='echarts.js'></script>
+</head>
+<body>
+  <div id="main" style="margin: 0 auto; width: 600px;height:400px;"></div>
+</body>
+<script type="text/javascript">
+  var myChart = echarts.init(document.getElementById('main'));
+  var option = {
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      axisLabel: { interval: 0, rotate: 30 },
+      data: [
+        '(-2.000, -0.400)',
+        '[-0.400, -0.200)',
+        '[-0.200, -0.125)',
+        '[-0.125, -0.075)',
+        '[-0.075, -0.025)',
+        '[-0.025, 0.025]',
+        '(0.025, 0.075]',
+        '(0.075, 0.125]',
+        '(0.125, 0.200]',
+        '(0.200, 0.400]',
+        '[0.400, 2.000]'
+      ]
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+data: [67, 529, 5207, 24674, 73680, 300, 22030, 995, 78, 73, 0],
+        type: 'line',
+        smooth: true,
+        label: {
+          show: true,
+          position: 'top'
+        },
+        areaStyle: {},
+        markLine: {
+          symbol: ['none', 'none'],
+          itemStyle: {
+            normal: {
+              lineStyle: {
+                type: 'dashed',
+                color: 'red'
+              },
+              label: {
+                show: true,
+                position: 'end',
+                distance: 6,
+                textStyle: {
+                  color: 'red',
+                  fontSize: 14
+                },
+                formatter: function () {
+                  return '';
+                }
+              }
+            }
+          },
+          data: [
+            {
+              name: '负区间',
+              label: {
+                show: true,
+                position: 'middle',
+                formatter: function () {
+                  return '负区间';
+                }
+              },
+              xAxis: '[-0.200, -0.125)'
+            },
+            {
+              name: '均值',
+              label: {
+                show: true,
+                position: 'end',
+                formatter: function () {
+                  return '0';
+                }
+              },
+              xAxis: '[-0.025, 0.025]'
+            },
+            {
+              name: '正区间',
+              label: {
+                show: true,
+                position: 'middle',
+                formatter: function () {
+                  return '正区间';
+                }
+              },
+              xAxis: '(0.125, 0.200]'
+            }
+          ]
+        }
+      },
+      {
+data: [0, 529, 5207, 20000, 60000, 100, 20000, 995, 78, 73, 0],
+        type: 'line',
+        smooth: true,
+        areaStyle: {}
+      }
+    ]
+  };
+  myChart.setOption(option);
+</script>
+
+</html>
